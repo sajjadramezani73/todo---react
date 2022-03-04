@@ -90,6 +90,8 @@
 
 }
 
+html ,body , #root {height: 100%;}
+
 body {
   direction: rtl;
   font-family: iranyekan;
@@ -118,8 +120,8 @@ body {
     width: 20px;
     height: 20px;
     background: #2666cf;
-    left: -22px;
-    top: 23px;
+    left: -21px;
+    top: 53%;
     border-top-right-radius: 20px;
     box-shadow: 0px -10px 0px 0px #f3f3f3;
 }
@@ -130,12 +132,17 @@ body {
     width: 20px;
     height: 20px;
     background: #2666cf;
-    right: -22px;
-    top: 23px;
+    right: -21px;
+    top: 53%;
     border-top-left-radius: 20px;
     box-shadow: 0px -10px 0px 0px #f3f3f3;
 }
 
+.todoList .todoItem {
+	animation: fadeItem 0.2s linear 0.5s forwards;
+	transform-origin: center;
+	opacity: 0;
+}
 .todoList .todoText {
 	text-overflow: ellipsis;
     display: -webkit-box;
@@ -145,16 +152,31 @@ body {
     overflow: hidden;
 }
 
+@keyframes fadeItem {
+	0%{transform: scale(0);}
+	100% {transform: scale(1);opacity: 1;}
+}
+
 /*******modal**********/
 .modal{
-	display: none;
+	transform: translateY(100%);
+	transition-delay: 0.4s
 }
 .modal.active {
-	display: block;
+	transform: translateY(0%);
+	
 }
 .modal .overlay {
 	background: rgba(0,0,0,0.7);
 	backdrop-filter: blur(2px);
+}
+.modal .confirmPan {
+	transform: translateY(100%);
+	transition: all 0.5s ease;
+}
+.modal .confirmPan.active {
+	transform: translateY(0%);
+	transition-delay: 0.3s
 }
 /*******modal**********/
 
