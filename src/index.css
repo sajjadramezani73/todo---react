@@ -107,6 +107,7 @@ body {
 }
 
 .clearHighLight {-webkit-tap-highlight-color: transparent;}
+button , a , div {-webkit-tap-highlight-color: transparent;}
 
 .widthInherit {max-width: inherit;}
 
@@ -200,3 +201,17 @@ body {
 	background: #fff;
 }
 /*******form**********/
+
+/*******splash**********/
+.splashPage {
+	background: url(./assets/images/bg.png);
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: 100%;
+}
+
+.splashPage .notepadImg {
+	background: #ffffff66;
+    backdrop-filter: blur(10px);
+}
+/*******splash**********/
