@@ -1,6 +1,5 @@
 import notepad from '../assets/images/notepad.png'
 import { useNavigate } from "react-router-dom";
-import { useEffect } from 'react';
 
 const Splash = () => {
 
