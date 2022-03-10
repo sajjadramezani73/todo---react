@@ -1,4 +1,3 @@
-import React from 'react'
 import LoadIconSvg from '../../util/LoadSvgIcon'
 
 const BottomNavigation = ({ clicked }) => {

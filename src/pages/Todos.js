@@ -1,18 +1,20 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import BottomNavigation from '../components/bottomNavigation/BottomNavigation'
 import Checkbox from '../components/form/checkbox/Checkbox';
 import Input from '../components/form/input/Input';
 import Modal from '../components/modal/Modal';
 import Todo from '../components/todo/Todo'
 import { v4 as uuidv4 } from 'uuid';
+import { setTodoLists, useTodosDispatch } from '../context/CounterContext';
 
 const Todos = () => {
+
+    const todoDispatch = useTodosDispatch()
 
     const [showModal, setShowModal] = useState(false);
     const [activeStatus, setActiveStatus] = useState(0);
     const [btnDisabled, setBtnDisabled] = useState(true);
-    const [todoList, setTodoList] = useState([]);
-    const [statusTodo, setStatusTodo] = useState([
+    const [statusTodo] = useState([
         { id: 1, status: 'success', title: 'انجام شده' },
         { id: 2, status: 'warning', title: 'در حال انجام' },
         { id: 3, status: 'danger', title: 'مهم' }
@@ -32,13 +34,15 @@ const Todos = () => {
     }, [todo])
 
     const saveTodo = () => {
-        setTodoList([...todoList, { id: uuidv4(), text: todo.text, status: todo.status }])
+        setTodoLists(todoDispatch, { id: uuidv4(), text: todo.text, status: todo.status })
         setShowModal(false)
+        setTodo({ text: '', status: '' })
+        setActiveStatus(0)
     }
 
     return (
         <div className='h-full flex flex-col justify-between widthInherit'>
-            <Todo todoList={todoList} />
+            <Todo />
             <BottomNavigation clicked={() => setShowModal(true)} />
 
             <Modal options={{

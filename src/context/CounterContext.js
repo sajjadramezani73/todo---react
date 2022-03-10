@@ -1,12 +1,12 @@
-import React, { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useReducer } from "react";
 
 var TodosStateContext = createContext();
 var TodosDispatchContext = createContext();
 
 function todosReducer(state, action) {
   switch (action.type) {
-    case "SET_TODO_LIST":
-      return { ...state, todos: action.payload };
+    case "SET_TODO_LISTS":
+      return { ...state, todos: [...state.todos, action.payload] };
 
     default: {
       throw new Error(`Unhandled action type: ${action.type}`);
@@ -30,7 +30,7 @@ function TodosProvider({ children }) {
 function useTodosState() {
   var context = useContext(TodosStateContext);
   if (context === undefined) {
-    throw new Error("useLayoutState must be used within a LayoutProvider");
+    throw new Error("useTodosState must be used within a TodosProvider");
   }
   return context;
 }
@@ -38,17 +38,17 @@ function useTodosState() {
 function useTodosDispatch() {
   var context = useContext(TodosDispatchContext);
   if (context === undefined) {
-    throw new Error("useLayoutDispatch must be used within a LayoutProvider");
+    throw new Error("useTodosDispatch must be used within a TodosProvider");
   }
   return context;
 }
 
-export { TodosProvider, useTodosState, useTodosDispatch, setTodoList };
+export { TodosProvider, useTodosState, useTodosDispatch, setTodoLists };
 
 // ###########################################################
-function setTodoList(dispatch, todo) {
+function setTodoLists(dispatch, todo) {
   dispatch({
-    type: "SET_TODO_LIST",
+    type: "SET_TODO_LISTS",
     payload: todo
   });
 }

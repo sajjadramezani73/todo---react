@@ -1,19 +1,16 @@
-import React from 'react'
-import { useTodosState } from '../../context/TodosContext'
+import { useTodosState } from '../../context/CounterContext'
 import NullPage from '../nullPage/NullPage'
 import TodoItem from './components/TodoItem'
 
-const Todo = ({ todoList }) => {
+const Todo = () => {
 
     const { todos } = useTodosState()
-
-    console.log(todos)
 
     return (
         <div className='overflow-auto flex-1 pb-10 todoList'>
             <div className='h-full p-3 overflow-auto'>
-                {todoList.length > 0 ? (
-                    todoList.map(todo => {
+                {todos.length > 0 ? (
+                    todos.map(todo => {
                         return <TodoItem todo={todo} key={todo.id} />
                     })
                 ) : (

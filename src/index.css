@@ -161,15 +161,21 @@ button , a , div {-webkit-tap-highlight-color: transparent;}
 /*******modal**********/
 .modal{
 	transform: translateY(100%);
-	transition-delay: 0.4s
+	transition-delay: 0.3s
 }
 .modal.active {
 	transform: translateY(0%);
+	transition-delay: 0s
 	
 }
 .modal .overlay {
 	background: rgba(0,0,0,0.7);
 	backdrop-filter: blur(2px);
+	opacity: 0;
+	transition: all 0.3s;
+}
+.modal.active .overlay {
+	opacity: 1;
 }
 .modal .confirmPan {
 	transform: translateY(100%);

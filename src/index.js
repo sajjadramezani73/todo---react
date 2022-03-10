@@ -1,16 +1,15 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from "react-router-dom";
 import './index.css';
 import App from './App';
-import { TodosProvider } from './context/TodosContext';
+import { TodosProvider } from './context/CounterContext';
 
 ReactDOM.render(
-  <BrowserRouter>
-    <TodosProvider>
+  <TodosProvider>
+    <BrowserRouter>
       <App />
-    </TodosProvider>
-  </BrowserRouter>,
+    </BrowserRouter>
+  </TodosProvider>,
   document.getElementById('root')
 );
 
