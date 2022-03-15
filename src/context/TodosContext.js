@@ -6,6 +6,7 @@ var TodosDispatchContext = createContext();
 function todosReducer(state, action) {
   switch (action.type) {
     case "SET_TODO_LISTS":
+      localStorage.setItem('todos', JSON.stringify([...state.todos, action.payload]))
       return { ...state, todos: [...state.todos, action.payload] };
 
     default: {
@@ -14,10 +15,13 @@ function todosReducer(state, action) {
   }
 }
 
+const todoList = JSON.parse(localStorage.getItem('todos'))
+const initialState = {
+  todos: todoList ? todoList : []
+}
+
 function TodosProvider({ children }) {
-  var [state, dispatch] = useReducer(todosReducer, {
-    todos: [],
-  });
+  var [state, dispatch] = useReducer(todosReducer, initialState);
   return (
     <TodosStateContext.Provider value={state}>
       <TodosDispatchContext.Provider value={dispatch}>

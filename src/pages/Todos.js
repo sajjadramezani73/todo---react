@@ -5,7 +5,7 @@ import Input from '../components/form/input/Input';
 import Modal from '../components/modal/Modal';
 import Todo from '../components/todo/Todo'
 import { v4 as uuidv4 } from 'uuid';
-import { setTodoLists, useTodosDispatch } from '../context/CounterContext';
+import { setTodoLists, useTodosDispatch } from '../context/TodosContext';
 
 const Todos = () => {
 
