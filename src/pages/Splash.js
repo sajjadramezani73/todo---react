@@ -22,7 +22,8 @@ const Splash = () => {
                 <p className='text-base font-medium text-gray-400'>برنامه ریزی، سازماندهی، پیگیری، در یک فضای بصری و مشارکتی</p>
             </div>
             <div className="flex justify-center mt-12">
-                <button className='bg-blue rounded-lg text-white py-3 px-6 text-base' onClick={navigateTodo}>شروع کنید</button>
+                <button className='bg-blue rounded-lg text-white py-3 px-6 text-base'
+                    onClick={navigateTodo}>شروع کنید</button>
             </div>
         </div>
     )

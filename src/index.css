@@ -139,11 +139,6 @@ button , a , div {-webkit-tap-highlight-color: transparent;}
     box-shadow: 0px -10px 0px 0px #f3f3f3;
 }
 
-.todoList .todoItem {
-	animation: fadeItem 0.2s linear 0.5s forwards;
-	transform-origin: center;
-	opacity: 0;
-}
 .todoList .todoText {
 	text-overflow: ellipsis;
     display: -webkit-box;
@@ -153,10 +148,6 @@ button , a , div {-webkit-tap-highlight-color: transparent;}
     overflow: hidden;
 }
 
-@keyframes fadeItem {
-	0%{transform: scale(0);}
-	100% {transform: scale(1);opacity: 1;}
-}
 
 /*******modal**********/
 .modal{

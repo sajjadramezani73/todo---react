@@ -1,6 +1,9 @@
 import { useTodosState } from '../../context/TodosContext'
 import NullPage from '../nullPage/NullPage'
 import TodoItem from './components/TodoItem'
+import { motion } from 'framer-motion'
+import { stagger } from '../../util/constant'
+
 
 const Todo = () => {
 
@@ -8,7 +11,11 @@ const Todo = () => {
 
     return (
         <div className='overflow-auto flex-1 pb-10 todoList'>
-            <div className='h-full p-3 overflow-auto'>
+            <motion.div
+                variants={stagger}
+                initial="initial"
+                animate="animate"
+                className='h-full p-3 overflow-y-auto overflow-x-hidden'>
                 {todos.length > 0 ? (
                     todos.map(todo => {
                         return <TodoItem todo={todo} key={todo.id} />
@@ -16,8 +23,8 @@ const Todo = () => {
                 ) : (
                     <NullPage title="لیستی برای نمایش وجود ندارد" />
                 )}
-            </div>
-        </div>
+            </motion.div>
+        </div >
     )
 }
 
