@@ -2,8 +2,11 @@ import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { fadeIn, showIn, stagger, translateX } from '../../../util/constant';
 import LoadSvgIcon from '../../../util/LoadSvgIcon';
+import { deleteTodo, useTodosDispatch } from '../../../context/TodosContext';
 
 const TodoItem = ({ todo }) => {
+
+    const todoDispatch = useTodosDispatch()
 
     const [todoStatus, setTodoStatus] = useState('');
     const [active, setActive] = useState(false);
@@ -17,6 +20,10 @@ const TodoItem = ({ todo }) => {
             setTodoStatus('bg-red')
         }
     }, [todo])
+
+    const deleteTodoHandler = (id) => {
+        deleteTodo(todoDispatch, id)
+    }
 
     return (
         <motion.div
@@ -46,6 +53,7 @@ const TodoItem = ({ todo }) => {
                     <LoadSvgIcon name="edit" size={23} color="#ffffff" />
                 </motion.p>
                 <motion.p
+                    onClick={() => deleteTodoHandler(todo.id)}
                     variants={showIn}
                     className="bg-red rounded-full w-7 h-7 flex justify-center items-center mx-0.5 xs:mx-1.5"
                 >

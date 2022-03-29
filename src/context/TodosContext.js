@@ -9,6 +9,15 @@ function todosReducer(state, action) {
       localStorage.setItem('todos', JSON.stringify([...state.todos, action.payload]))
       return { ...state, todos: [...state.todos, action.payload] };
 
+    case "DELETE_TODO_ITEM":
+      let updatedTodos = [...state.todos]
+      const todoIndex = updatedTodos.findIndex(item => {
+        return item.id === action.payload
+      })
+      updatedTodos.splice(todoIndex, 1)
+      localStorage.setItem('todos', JSON.stringify([...updatedTodos]))
+      return { ...state, todos: [...updatedTodos] };
+
     default: {
       throw new Error(`Unhandled action type: ${action.type}`);
     }
@@ -47,7 +56,7 @@ function useTodosDispatch() {
   return context;
 }
 
-export { TodosProvider, useTodosState, useTodosDispatch, setTodoLists };
+export { TodosProvider, useTodosState, useTodosDispatch, setTodoLists, deleteTodo };
 
 // ###########################################################
 function setTodoLists(dispatch, todo) {
@@ -55,4 +64,11 @@ function setTodoLists(dispatch, todo) {
     type: "SET_TODO_LISTS",
     payload: todo
   });
+}
+
+function deleteTodo(dispatch, todoId) {
+  dispatch({
+    type: "DELETE_TODO_ITEM",
+    payload: todoId
+  })
 }
