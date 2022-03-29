@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { fadeIn, showIn, stagger, translateX } from '../../../util/constant';
+import LoadSvgIcon from '../../../util/LoadSvgIcon';
 
 const TodoItem = ({ todo }) => {
 
@@ -36,14 +37,20 @@ const TodoItem = ({ todo }) => {
             <motion.div
                 variants={stagger}
                 animate={active ? 'animate' : 'initial'}
-                className='absolute top-1/2 translate-y-[-50%] z-0 flex'
+                className='absolute top-1/2 translate-y-[-50%] z-0 flex items-center w-1/4 justify-center'
             >
                 <motion.p
                     variants={showIn}
-                >1</motion.p>
+                    className="bg-blue rounded-full w-7 h-7 flex justify-center items-center mx-0.5 xs:mx-1.5"
+                >
+                    <LoadSvgIcon name="edit" size={23} color="#ffffff" />
+                </motion.p>
                 <motion.p
                     variants={showIn}
-                >2</motion.p>
+                    className="bg-red rounded-full w-7 h-7 flex justify-center items-center mx-0.5 xs:mx-1.5"
+                >
+                    <LoadSvgIcon name="close" size={11} color="#ffffff" />
+                </motion.p>
             </motion.div>
         </motion.div>
     )

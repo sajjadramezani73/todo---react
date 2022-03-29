@@ -28,5 +28,5 @@ export const showIn = {
 
 export const translateX = {
     initial: { x: 0 },
-    animate: { x: '-30%' },
+    animate: { x: '-25%' },
 }
