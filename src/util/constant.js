@@ -30,3 +30,14 @@ export const translateX = {
     initial: { x: 0 },
     animate: { x: '-25%' },
 }
+
+export const translateY = {
+    initial: { y: '100%' },
+    animate: {
+        y: 0,
+        transition: {
+            ease: easing,
+            duration: 0.4
+        }
+    },
+}
