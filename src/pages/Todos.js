@@ -49,7 +49,7 @@ const Todos = () => {
                 show: showModal,
                 closeModal: (value) => setShowModal(value)
             }} >
-                <div className="flex items-center justify-evenly">
+                <div className="flex items-center">
                     {statusTodo.map(item => {
                         const showStatus = item.id === activeStatus ? 'showStatus' : ''
                         return <Checkbox

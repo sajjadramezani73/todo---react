@@ -4,7 +4,6 @@ import TodoItem from './components/TodoItem'
 import { motion } from 'framer-motion'
 import { stagger } from '../../util/constant'
 
-
 const Todo = () => {
 
     const { todos } = useTodosState()

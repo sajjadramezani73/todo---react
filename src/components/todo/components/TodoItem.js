@@ -48,14 +48,14 @@ const TodoItem = ({ todo }) => {
             >
                 <motion.p
                     variants={showIn}
-                    className="bg-blue rounded-full w-7 h-7 flex justify-center items-center mx-0.5 xs:mx-1.5"
+                    className="bg-blue rounded-full w-7 h-7 flex justify-center items-center mx-0.5 xs:mx-1.5 cursor-pointer"
                 >
                     <LoadSvgIcon name="edit" size={23} color="#ffffff" />
                 </motion.p>
                 <motion.p
                     onClick={() => deleteTodoHandler(todo.id)}
                     variants={showIn}
-                    className="bg-red rounded-full w-7 h-7 flex justify-center items-center mx-0.5 xs:mx-1.5"
+                    className="bg-red rounded-full w-7 h-7 flex justify-center items-center mx-0.5 xs:mx-1.5 cursor-pointer"
                 >
                     <LoadSvgIcon name="close" size={11} color="#ffffff" />
                 </motion.p>
