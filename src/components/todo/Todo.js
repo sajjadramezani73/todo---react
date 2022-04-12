@@ -3,10 +3,13 @@ import NullPage from '../nullPage/NullPage'
 import TodoItem from './components/TodoItem'
 import { motion } from 'framer-motion'
 import { stagger } from '../../util/constant'
+import { useState } from 'react'
 
 const Todo = () => {
 
     const { todos } = useTodosState()
+
+    const [activeTodo, setActiveTodo] = useState(null);
 
     return (
         <div className='overflow-auto flex-1 pb-10 todoList'>
@@ -17,7 +20,13 @@ const Todo = () => {
                 className='h-full p-3 overflow-y-auto overflow-x-hidden'>
                 {todos.length > 0 ? (
                     todos.map(todo => {
-                        return <TodoItem todo={todo} key={todo.id} />
+                        const active = todo.id === activeTodo ? true : false
+                        return <TodoItem
+                            todo={todo}
+                            activeTodo={active}
+                            key={todo.id}
+                            clicked={() => setActiveTodo(todo.id)}
+                        />
                     })
                 ) : (
                     <NullPage title="لیستی برای نمایش وجود ندارد" />

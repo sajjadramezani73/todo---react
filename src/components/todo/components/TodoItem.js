@@ -4,12 +4,11 @@ import { fadeIn, showIn, stagger, translateX } from '../../../util/constant';
 import LoadSvgIcon from '../../../util/LoadSvgIcon';
 import { deleteTodo, useTodosDispatch } from '../../../context/TodosContext';
 
-const TodoItem = ({ todo }) => {
+const TodoItem = ({ todo, activeTodo, clicked }) => {
 
     const todoDispatch = useTodosDispatch()
 
     const [todoStatus, setTodoStatus] = useState('');
-    const [active, setActive] = useState(false);
 
     useEffect(() => {
         if (todo.status === 'success') {
@@ -32,9 +31,9 @@ const TodoItem = ({ todo }) => {
         >
             <motion.div
                 variants={translateX}
-                animate={active ? 'animate' : 'initial'}
+                animate={activeTodo ? 'animate' : 'initial'}
                 className='py-2 px-3 h-20 bg-white rounded-xl mb-3 flex cursor-pointer relative z-10 clearHighLight'
-                onClick={() => setActive(!active)}
+                onClick={clicked}
             >
                 <div className={`${todoStatus} w-1.5 h-full rounded-md`}></div>
                 <div className='flex-1 pt-1 pr-2'>
@@ -43,7 +42,7 @@ const TodoItem = ({ todo }) => {
             </motion.div>
             <motion.div
                 variants={stagger}
-                animate={active ? 'animate' : 'initial'}
+                animate={activeTodo ? 'animate' : 'initial'}
                 className='absolute top-1/2 translate-y-[-50%] z-0 flex items-center w-1/4 justify-center'
             >
                 <motion.p
